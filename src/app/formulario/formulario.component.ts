@@ -1,3 +1,4 @@
+import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Cliente } from '../cliente';
@@ -11,7 +12,7 @@ import { CLIENTES } from '../mock-clientes';
 export class FormularioComponent implements OnInit {
   cliente: Cliente = { id: 0, nombre: '', dni: '', fechaNacimiento: new Date() };
 
-  constructor(private route: ActivatedRoute) { }
+  constructor(private route: ActivatedRoute, private location: Location) { }
 
   ngOnInit(): void {
     const id: number = Number(this.route.snapshot.paramMap.get('id'));
@@ -26,6 +27,8 @@ export class FormularioComponent implements OnInit {
     if(this.cliente.id === 0) {
       CLIENTES.push(this.cliente);
     }
+
+    this.location.back();
   }
 
   cambioFecha(fechaTexto: string) {
