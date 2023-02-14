@@ -11,11 +11,13 @@ import { CLIENTES } from '../mock-clientes';
 export class FormularioComponent implements OnInit {
   cliente: Cliente = { id: 0, nombre: '', dni: '', fechaNacimiento: new Date() };
 
-  constructor(private route: ActivatedRoute) {}
+  constructor(private route: ActivatedRoute) { }
 
   ngOnInit(): void {
     const id: number = Number(this.route.snapshot.paramMap.get('id'));
-    this.cliente = CLIENTES.find(cliente => cliente.id === id)!;
+    if (id) {
+      this.cliente = CLIENTES.find(cliente => cliente.id === id)!;
+    }
   }
 
   aceptar() {
