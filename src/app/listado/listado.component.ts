@@ -11,6 +11,6 @@ export class ListadoComponent {
   clientes: Cliente[] = CLIENTES;
 
   borrar(id: number): void {
-    alert(id);
+    this.clientes = CLIENTES.filter(cliente => cliente.id !== id);
   }
 }

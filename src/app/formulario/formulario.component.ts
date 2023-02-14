@@ -22,6 +22,10 @@ export class FormularioComponent implements OnInit {
 
   aceptar() {
     console.log(this.cliente);
+
+    if(this.cliente.id === 0) {
+      CLIENTES.push(this.cliente);
+    }
   }
 
   cambioFecha(fechaTexto: string) {
