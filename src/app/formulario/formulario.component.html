@@ -4,23 +4,23 @@
             Cliente
         </legend>
         <div>
-            <label for="">Id</label>
-            <input type="">
+            <label for="id">Id</label>
+            <input type="number" readonly [(ngModel)]="cliente.id" id="id" name="id">
         </div>
         <div>
-            <label for="">Nombre</label>
-            <input type="">
+            <label for="nombre">Nombre</label>
+            <input type="text" [(ngModel)]="cliente.nombre" id="nombre" name="nombre">
         </div>
         <div>
-            <label for="">DNI</label>
-            <input type="">
+            <label for="dni">DNI</label>
+            <input type="text" [(ngModel)]="cliente.dni" id="dni" name="dni">
         </div>
         <div>
-            <label for="">Fecha de nacimiento</label>
-            <input type="">
+            <label for="fechaNacimiento">Fecha de nacimiento</label>
+            <input type="date" [ngModel]="cliente.fechaNacimiento.toISOString().substring(0,10)" (ngModelChange)="cambioFecha($event)" id="fechaNacimiento" name="fechaNacimiento">
         </div>
 
-        <button routerLink="/listado">Aceptar</button>
+        <button (click)="aceptar()">Aceptar</button>
     </fieldset>
 
 </form>
