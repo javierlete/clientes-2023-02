@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AlertaService } from '../alerta.service';
 import { Cliente } from '../cliente';
 import { ClienteService } from '../cliente.service';
 
@@ -10,7 +11,7 @@ import { ClienteService } from '../cliente.service';
 export class ListadoComponent implements OnInit {
   clientes: Cliente[] = [];
 
-  constructor(private clienteService: ClienteService) { }
+  constructor(public alertaService: AlertaService, private clienteService: ClienteService) { }
 
   ngOnInit(): void {
     this.cargarClientes();
@@ -21,6 +22,7 @@ export class ListadoComponent implements OnInit {
   }
 
   borrar(id: number): void {
+    this.alertaService.limpiar().subscribe();
     this.clienteService.borrar(id).subscribe(() => this.cargarClientes());
   }
 }

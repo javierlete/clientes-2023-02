@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { Observable, of, tap } from 'rxjs';
+import { AlertaService } from './alerta.service';
 import { Cliente } from './cliente';
 
 @Injectable({
@@ -9,18 +10,23 @@ import { Cliente } from './cliente';
 export class ClienteService {
   private URL = 'http://localhost:3000/clientes/';
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private alertaService: AlertaService) { }
 
   obtenerTodos(): Observable<Cliente[]> {
-    this.log('obtenerTodos');
-    
-    return this.http.get<Cliente[]>(this.URL);
+    return this.http.get<Cliente[]>(this.URL).pipe(
+      tap(() => this.log('Se han recibido los clientes'))
+    );
   }
 
   obtenerPorId(id: number): Observable<Cliente | undefined> {
     this.log('obtenerPorId');
     
-    return this.http.get<Cliente>(this.URL + id);
+    return this.http.get<Cliente>(this.URL + id).pipe(
+      tap(cliente => {
+        console.log({...cliente, fechaNacimiento: new Date(cliente.fechaNacimiento)});
+        return {...cliente, fechaNacimiento: new Date(cliente.fechaNacimiento)};
+      })
+    );
   }
 
   insertar(cliente: Cliente): Observable<Cliente> {
@@ -43,5 +49,7 @@ export class ClienteService {
 
   log(mensaje: string){
     console.log(mensaje);
+
+    this.alertaService.agregar({ mensaje, nivel: 'success' });
   }
 }

@@ -16,7 +16,7 @@
             <td>{{c.dni}}</td>
             <td>{{c.fechaNacimiento | date: 'dd/MM/yyyy'}}</td>
             <td>
-                <a class="btn btn-sm btn-primary" routerLink="/formulario/{{c.id}}">Editar</a>
+                <a class="btn btn-sm btn-primary" (click)="alertaService.limpiar()" routerLink="/formulario/{{c.id}}">Editar</a>
                 <a class="btn btn-sm btn-danger" routerLink="/listado" (click)="borrar(c.id)">Borrar</a>
             </td>
         </tr>
@@ -28,7 +28,7 @@
             <td></td>
             <td></td>
             <td>
-                <a class="btn btn-sm btn-primary" routerLink="/formulario">Añadir</a>
+                <a class="btn btn-sm btn-primary" (click)="alertaService.limpiar()" routerLink="/formulario">Añadir</a>
             </td>
         </tr>
     </tfoot>

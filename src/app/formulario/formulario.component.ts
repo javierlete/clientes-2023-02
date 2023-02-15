@@ -1,6 +1,7 @@
 import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { AlertaService } from '../alerta.service';
 import { Cliente } from '../cliente';
 import { ClienteService } from '../cliente.service';
 
@@ -12,7 +13,7 @@ import { ClienteService } from '../cliente.service';
 export class FormularioComponent implements OnInit {
   cliente: Cliente = { id: 0, nombre: '', dni: '', fechaNacimiento: new Date() };
 
-  constructor(private clienteService: ClienteService, private route: ActivatedRoute, private location: Location) { }
+  constructor(private alertaService: AlertaService, private clienteService: ClienteService, private route: ActivatedRoute, private location: Location) { }
 
   ngOnInit(): void {
     const id: number = Number(this.route.snapshot.paramMap.get('id'));
@@ -20,6 +21,7 @@ export class FormularioComponent implements OnInit {
     if (id) {
       this.clienteService.obtenerPorId(id).subscribe(cliente => {
         if(cliente) {
+          console.log('formulario', cliente);
           return this.cliente = cliente
         } else {
           return undefined;
@@ -29,6 +31,8 @@ export class FormularioComponent implements OnInit {
   }
 
   aceptar() {
+    this.alertaService.limpiar().subscribe();
+    
     console.log(this.cliente);
 
     if(this.cliente.id) {

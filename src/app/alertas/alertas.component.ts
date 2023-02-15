@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Alerta } from '../alerta';
+import { AlertaService } from '../alerta.service';
 
 @Component({
   selector: 'app-alertas',
@@ -7,8 +8,5 @@ import { Alerta } from '../alerta';
   styleUrls: ['./alertas.component.css']
 })
 export class AlertasComponent {
-  alertas: Alerta[] = [ 
-    { mensaje: 'Bien', nivel: 'success' },
-    { mensaje: 'Mal', nivel: 'danger' }
-  ];
+  constructor(public alertaService: AlertaService) { }
 }
