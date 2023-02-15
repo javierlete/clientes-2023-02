@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Cliente } from '../cliente';
+import { ClienteService } from '../cliente.service';
 import { CLIENTES } from '../mock-clientes';
 
 @Component({
@@ -7,10 +8,20 @@ import { CLIENTES } from '../mock-clientes';
   templateUrl: './listado.component.html',
   styleUrls: ['./listado.component.css']
 })
-export class ListadoComponent {
-  clientes: Cliente[] = CLIENTES;
+export class ListadoComponent implements OnInit {
+  clientes: Cliente[] = [];
+
+  constructor(private clienteService: ClienteService) { }
+
+  ngOnInit(): void {
+    this.cargarClientes();
+  }
+
+  private cargarClientes() {
+    this.clienteService.obtenerTodos().subscribe(clientes => this.clientes = clientes);
+  }
 
   borrar(id: number): void {
-    this.clientes = CLIENTES.filter(cliente => cliente.id !== id);
+    this.clienteService.borrar(id).subscribe(() => this.cargarClientes());
   }
 }
