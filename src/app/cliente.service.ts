@@ -1,55 +1,44 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { Cliente } from './cliente';
-import { CLIENTES } from './mock-clientes';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ClienteService {
-  private ultimoId = 2;
+  private URL = 'http://localhost:3000/clientes/';
 
-  private clientes: Cliente[] = CLIENTES;
-
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
   obtenerTodos(): Observable<Cliente[]> {
     this.log('obtenerTodos');
     
-    return of(this.clientes);
+    return this.http.get<Cliente[]>(this.URL);
   }
 
   obtenerPorId(id: number): Observable<Cliente | undefined> {
     this.log('obtenerPorId');
     
-    return of(this.clientes.find(c => c.id === id));
+    return this.http.get<Cliente>(this.URL + id);
   }
 
   insertar(cliente: Cliente): Observable<Cliente> {
     this.log('insertar');
     
-    cliente.id = ++this.ultimoId;
-    this.clientes.push(cliente);
-    return of(cliente);
+    return this.http.post<Cliente>(this.URL, cliente);
   }
 
   modificar(cliente: Cliente): Observable<Cliente> {
     this.log('modificar');
 
-    for(let i: number = 0; i < this.clientes.length; i++) {
-      if(this.clientes[i].id === cliente.id) {
-        return of(this.clientes[i] = cliente);
-      }
-    }
-
-    throw "No se ha encontrado el cliente a modificar";
+    return this.http.put<Cliente>(this.URL + cliente.id, cliente);
   }
 
   borrar(id: number): Observable<any> {
     this.log('borrar');
 
-    this.clientes = this.clientes.filter(c => c.id !== id);
-    return of({});
+    return this.http.delete(this.URL + id);
   }
 
   log(mensaje: string){

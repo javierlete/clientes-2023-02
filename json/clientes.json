@@ -1,0 +1,16 @@
+{
+    "clientes": [
+        {
+            "id": 1,
+            "nombre": "Javier",
+            "dni": "12345678Z",
+            "fechaNacimiento": "2000-01-02"
+        },
+        {
+            "id": 2,
+            "nombre": "Pepe",
+            "dni": "87654321A",
+            "fechaNacimiento": "2003-02-01"
+        }
+    ]
+}
