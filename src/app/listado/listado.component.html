@@ -1,5 +1,5 @@
-<table>
-    <thead>
+<table class="table table-hover table-bordered table-striped">
+    <thead class="table-dark">
         <tr>
             <th>Id</th>
             <th>Nombre</th>
@@ -15,17 +15,20 @@
             <td>{{c.nombre}}</td>
             <td>{{c.dni}}</td>
             <td>{{c.fechaNacimiento | date: 'dd/MM/yyyy'}}</td>
-            <td><a routerLink="/formulario/{{c.id}}">Editar</a><a routerLink="/listado" (click)="borrar(c.id)">Borrar</a></td>
+            <td>
+                <a class="btn btn-sm btn-primary" routerLink="/formulario/{{c.id}}">Editar</a>
+                <a class="btn btn-sm btn-danger" routerLink="/listado" (click)="borrar(c.id)">Borrar</a>
+            </td>
         </tr>
     </tbody>
-    <tfoot>
+    <tfoot class="table-dark">
         <tr>
             <td></td>
             <td></td>
             <td></td>
             <td></td>
             <td>
-                <a routerLink="/formulario">Añadir</a>
+                <a class="btn btn-sm btn-primary" routerLink="/formulario">Añadir</a>
             </td>
         </tr>
     </tfoot>
