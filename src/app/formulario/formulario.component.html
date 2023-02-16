@@ -24,7 +24,7 @@
         <div class="row mb-3">
             <label class="form-label col-sm-2" for="fechaNacimiento">Fecha de nacimiento</label>
             <div class="col-sm-10">
-                <input class="form-control" type="date" [ngModel]="cliente.fechaNacimiento.toISOString().substring(0,10)" (ngModelChange)="cambioFecha($event)" id="fechaNacimiento" name="fechaNacimiento">
+                <input class="form-control" type="date" [(ngModel)]="cliente.fechaNacimiento" id="fechaNacimiento" name="fechaNacimiento">
             </div>
         </div>
 

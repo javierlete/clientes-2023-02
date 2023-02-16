@@ -19,32 +19,27 @@ export class ClienteService {
   }
 
   obtenerPorId(id: number): Observable<Cliente | undefined> {
-    this.log('obtenerPorId');
-    
     return this.http.get<Cliente>(this.URL + id).pipe(
-      tap(cliente => {
-        console.log({...cliente, fechaNacimiento: new Date(cliente.fechaNacimiento)});
-        return {...cliente, fechaNacimiento: new Date(cliente.fechaNacimiento)};
-      })
+      tap(() => this.log('Se ha obtenido el cliente ' + id))
     );
   }
 
   insertar(cliente: Cliente): Observable<Cliente> {
-    this.log('insertar');
-    
-    return this.http.post<Cliente>(this.URL, cliente);
+    return this.http.post<Cliente>(this.URL, cliente).pipe(
+      tap(() => this.log('insertar'))
+    );
   }
 
   modificar(cliente: Cliente): Observable<Cliente> {
-    this.log('modificar');
-
-    return this.http.put<Cliente>(this.URL + cliente.id, cliente);
+    return this.http.put<Cliente>(this.URL + cliente.id, cliente).pipe(
+      tap(() => this.log('Se ha modificado el cliente ' + cliente.id))
+    );
   }
 
   borrar(id: number): Observable<any> {
-    this.log('borrar');
-
-    return this.http.delete(this.URL + id);
+    return this.http.delete(this.URL + id).pipe(
+      tap(() => this.log('Se ha borrado el cliente con id ' + id))
+    );
   }
 
   log(mensaje: string){

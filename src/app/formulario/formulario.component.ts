@@ -41,9 +41,4 @@ export class FormularioComponent implements OnInit {
       this.clienteService.insertar(this.cliente).subscribe(() => this.location.back());
     }
   }
-
-  cambioFecha(fechaTexto: string) {
-    this.cliente.fechaNacimiento = new Date(fechaTexto);
-    console.log(this.cliente);
-  }
 }
