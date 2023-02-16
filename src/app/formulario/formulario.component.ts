@@ -36,9 +36,9 @@ export class FormularioComponent implements OnInit {
     console.log(this.cliente);
 
     if(this.cliente.id) {
-      this.clienteService.modificar(this.cliente).subscribe(() => this.location.back());
+      this.clienteService.modificar(this.cliente).subscribe({next: () => this.location.back()});
     } else {
-      this.clienteService.insertar(this.cliente).subscribe(() => this.location.back());
+      this.clienteService.insertar(this.cliente).subscribe({next: () => this.location.back()});
     }
   }
 }

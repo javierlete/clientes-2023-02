@@ -23,6 +23,6 @@ export class ListadoComponent implements OnInit {
 
   borrar(id: number): void {
     this.alertaService.limpiar().subscribe();
-    this.clienteService.borrar(id).subscribe(() => this.cargarClientes());
+    this.clienteService.borrar(id).subscribe({next: () => this.cargarClientes()});
   }
 }

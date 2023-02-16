@@ -3,30 +3,11 @@
         <legend>
             Cliente
         </legend>
-        <div class="row mb-3">
-            <label class="form-label col-sm-2" for="id">Id</label>
-            <div class="col-sm-10">
-                <input class="form-control" type="number" readonly [(ngModel)]="cliente.id" id="id" name="id">
-            </div>
-        </div>
-        <div class="row mb-3">
-            <label class="form-label col-sm-2" for="nombre">Nombre</label>
-            <div class="col-sm-10">
-                <input class="form-control" type="text" [(ngModel)]="cliente.nombre" id="nombre" name="nombre">
-            </div>
-        </div>
-        <div class="row mb-3">
-            <label class="form-label col-sm-2" for="dni">DNI</label>
-            <div class="col-sm-10">
-                <input class="form-control" type="text" [(ngModel)]="cliente.dni" id="dni" name="dni">
-            </div>
-        </div>
-        <div class="row mb-3">
-            <label class="form-label col-sm-2" for="fechaNacimiento">Fecha de nacimiento</label>
-            <div class="col-sm-10">
-                <input class="form-control" type="date" [(ngModel)]="cliente.fechaNacimiento" id="fechaNacimiento" name="fechaNacimiento">
-            </div>
-        </div>
+
+        <app-labelinput id="id" etiqueta="Id" tipo="number" [soloLectura]="true" [dato]="cliente.id"></app-labelinput>
+        <app-labelinput id="nombre" etiqueta="Nombre" [dato]="cliente.nombre"></app-labelinput>
+        <app-labelinput id="dni" etiqueta="DNI" [dato]="cliente.dni"></app-labelinput>
+        <app-labelinput id="fechaNacimiento" etiqueta="Fecha de nacimiento" tipo="date" [dato]="cliente.fechaNacimiento"></app-labelinput>
 
         <button class="btn btn-primary" (click)="aceptar()">Aceptar</button>
     </fieldset>
