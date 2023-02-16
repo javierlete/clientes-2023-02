@@ -4,10 +4,10 @@
             Cliente
         </legend>
 
-        <app-labelinput id="id" etiqueta="Id" tipo="number" [soloLectura]="true" [dato]="cliente.id"></app-labelinput>
-        <app-labelinput id="nombre" etiqueta="Nombre" [dato]="cliente.nombre"></app-labelinput>
-        <app-labelinput id="dni" etiqueta="DNI" [dato]="cliente.dni"></app-labelinput>
-        <app-labelinput id="fechaNacimiento" etiqueta="Fecha de nacimiento" tipo="date" [dato]="cliente.fechaNacimiento"></app-labelinput>
+        <app-labelinput id="id" etiqueta="Id" tipo="number" [soloLectura]="true" [(dato)]="cliente.id"></app-labelinput>
+        <app-labelinput id="nombre" etiqueta="Nombre" [(dato)]="cliente.nombre"></app-labelinput>
+        <app-labelinput id="dni" etiqueta="DNI" [(dato)]="cliente.dni"></app-labelinput>
+        <app-labelinput id="fechaNacimiento" etiqueta="Fecha de nacimiento" tipo="date" [(dato)]="cliente.fechaNacimiento"></app-labelinput>
 
         <button class="btn btn-primary" (click)="aceptar()">Aceptar</button>
     </fieldset>

@@ -10,6 +10,7 @@ import { FormularioComponent } from './formulario/formulario.component';
 import { FormsModule } from '@angular/forms';
 import { AlertasComponent } from './alertas/alertas.component';
 import { LabelinputComponent } from './labelinput/labelinput.component';
+import { TablaComponent } from './tabla/tabla.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { LabelinputComponent } from './labelinput/labelinput.component';
     ListadoComponent,
     FormularioComponent,
     AlertasComponent,
-    LabelinputComponent
+    LabelinputComponent,
+    TablaComponent
   ],
   imports: [
     BrowserModule,

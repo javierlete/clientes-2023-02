@@ -21,6 +21,14 @@ export class ListadoComponent implements OnInit {
     this.clienteService.obtenerTodos().subscribe(clientes => this.clientes = clientes);
   }
 
+  anadir(): void {
+    this.alertaService.limpiar().subscribe();
+  }
+
+  editar(id: number): void {
+    this.alertaService.limpiar().subscribe();
+  }
+
   borrar(id: number): void {
     this.alertaService.limpiar().subscribe();
     this.clienteService.borrar(id).subscribe({next: () => this.cargarClientes()});

@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-labelinput',
@@ -11,4 +11,6 @@ export class LabelinputComponent {
   @Input() tipo: string = 'text';
   @Input() soloLectura: boolean = false;
   @Input() dato: any;
+
+  @Output() datoChange = new EventEmitter<any>();
 }

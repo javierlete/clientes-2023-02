@@ -11,18 +11,6 @@
       "nombre": "Pepe",
       "dni": "87654321A",
       "fechaNacimiento": "2003-03-19"
-    },
-    {
-      "id": 3,
-      "nombre": "asdfasdf",
-      "dni": "12341234",
-      "fechaNacimiento": "2023-02-16T18:23:57.792Z"
-    },
-    {
-      "id": 4,
-      "nombre": "",
-      "dni": "",
-      "fechaNacimiento": "2023-02-16T18:32:22.466Z"
     }
   ]
 }

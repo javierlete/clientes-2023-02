@@ -1,0 +1,25 @@
+<table class="table table-hover table-bordered table-striped">
+    <thead class="table-dark">
+        <tr>
+            <th *ngFor="let etiqueta of etiquetas">{{etiqueta}}</th>
+            <th>Opciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let fila of filas">
+            <td *ngFor="let etiqueta of etiquetas">{{fila[etiqueta]}}</td>
+            <td>
+                <a class="btn btn-sm btn-primary" (click)="editar(fila.id)" routerLink="{{rutaFormulario}}/{{fila.id}}">Editar</a>
+                <a class="btn btn-sm btn-danger" routerLink="{{rutaListado}}" (click)="borrar(fila.id)">Borrar</a>
+            </td>
+        </tr>
+    </tbody>
+    <tfoot class="table-dark">
+        <tr>
+            <td *ngFor="let etiqueta of etiquetas"></td>
+            <td>
+                <a class="btn btn-sm btn-primary" (click)="anadir()" routerLink="{{rutaFormulario}}">Añadir</a>
+            </td>
+        </tr>
+    </tfoot>
+</table>

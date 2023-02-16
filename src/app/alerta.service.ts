@@ -9,7 +9,6 @@ export class AlertaService {
   private alertas: Alerta[] = [];
 
   obtenerTodas(): Observable<Alerta[]> {
-    console.log(this.alertas);
     return of([...this.alertas]);
   }
 

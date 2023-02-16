@@ -11,7 +11,7 @@ import { ClienteService } from '../cliente.service';
   styleUrls: ['./formulario.component.css']
 })
 export class FormularioComponent implements OnInit {
-  cliente: Cliente = { id: 0, nombre: '', dni: '', fechaNacimiento: new Date() };
+  cliente: Cliente = { id: 0, nombre: '', dni: '', fechaNacimiento: '' };
 
   constructor(private alertaService: AlertaService, private clienteService: ClienteService, private route: ActivatedRoute, private location: Location) { }
 
